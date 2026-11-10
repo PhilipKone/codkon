@@ -3,412 +3,234 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Codkon Technologies — Research · Coding · Engineering</title>
-  <meta name="description" content="Codkon Technologies is an integrated commercial parent brand encompassing software development, cloud frameworks, embedded physical infrastructure, and applied tech systems. Reg. No: BN413711026, Republic of Ghana." />
-  <meta property="og:title" content="Codkon Technologies" />
-  <meta property="og:description" content="Research · Coding · Engineering — Ecosystem Scaling & Multi-Division Architecture" />
-  <meta property="og:url" content="https://www.codkon.com" />
-  <meta property="og:type" content="website" />
-  <link rel="canonical" href="https://www.codkon.com" />
+  <title>Codkon Technologies — Engineering & Infrastructure</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --blue:   #1a56db;
-      --dark:   #0f172a;
-      --mid:    #1e293b;
-      --card:   #1e2d45;
-      --border: #2d4060;
-      --text:   #e2e8f0;
-      --muted:  #94a3b8;
+      --bg: #090a0f;
+      --card-bg: rgba(255, 255, 255, 0.02);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-border: rgba(255, 255, 255, 0.2);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
       --accent: #38bdf8;
-      --green:  #22c55e;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--dark);
+      background-color: var(--bg);
       color: var(--text);
-      min-height: 100vh;
+      font-family: var(--font);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(15,23,42,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 60px;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo svg { width: 32px; height: 32px; }
-    .nav-logo span { font-size: 1.1rem; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
-    .nav-logo .dot { color: var(--accent); }
-    .nav-reg { font-size: 0.72rem; color: var(--muted); display: none; }
-    @media(min-width:600px){ .nav-reg { display: block; } }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
-    /* ── HERO ── */
-    .hero {
-      text-align: center;
-      padding: 100px 1.5rem 80px;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,86,219,0.18) 0%, transparent 70%);
+    /* Header */
+    header {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.3);
-      border-radius: 999px; padding: 4px 14px;
-      font-size: 0.75rem; color: var(--accent); font-weight: 600;
-      letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1.5rem;
-    }
-    .hero-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-    h1 {
-      font-size: clamp(2.4rem, 7vw, 4.5rem);
-      font-weight: 800; letter-spacing: -1.5px;
-      line-height: 1.1; margin-bottom: 0.5rem;
-    }
-    h1 .brand { color: var(--accent); }
-    .hero-tagline {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      color: var(--muted); margin-bottom: 2.5rem;
-      letter-spacing: 0.5px;
-    }
-    .hero-desc {
-      max-width: 640px; margin: 0 auto 3rem;
-      color: var(--muted); font-size: 1rem; line-height: 1.8;
-    }
-    .hero-cta {
-      display: inline-block;
-      background: var(--blue); color: #fff;
-      padding: 0.85rem 2.2rem; border-radius: 8px;
-      text-decoration: none; font-weight: 600; font-size: 1rem;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .hero-cta:hover { background: #1d4ed8; transform: translateY(-1px); }
+    .brand { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.025em; }
+    .brand span { color: var(--accent); }
+    .reg-tag { font-size: 0.85rem; color: var(--text-muted); font-mono: monospace; }
 
-    /* ── SECTION TITLES ── */
-    section { padding: 70px 1.5rem; max-width: 1100px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px;
-      color: var(--accent); font-weight: 600; margin-bottom: 0.5rem;
-    }
-    .section-title { font-size: clamp(1.5rem,4vw,2rem); font-weight: 700; margin-bottom: 0.5rem; }
-    .section-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 2.5rem; max-width: 580px; }
-    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+    /* Hero */
+    .hero { padding: 5rem 0 4rem; max-width: 800px; }
+    .hero h1 { font-size: 3rem; font-weight: 800; tracking: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; }
 
-    /* ── DIVISION GRID ── */
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+    /* Grid */
+    .section-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 2rem; font-weight: 600; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; margin-bottom: 6rem; }
+    
     .card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.5rem;
-      text-decoration: none; color: inherit;
-      transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
-      display: block;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
-    .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 0.9rem; }
-    .card-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      font-size: 1.3rem;
+    .card:hover {
+      border-color: var(--card-hover-border);
+      transform: translateY(-2px);
     }
-    .card-name { font-weight: 700; font-size: 1rem; }
-    .card-url { font-size: 0.75rem; color: var(--accent); font-family: monospace; }
-    .card-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
-    .card-tag {
-      display: inline-block; margin-top: 0.9rem;
-      font-size: 0.7rem; padding: 2px 10px; border-radius: 999px;
-      background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.25);
-      color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
-    }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+    .card-title { font-size: 1.15rem; font-weight: 600; }
+    .card-tag { font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--text-muted); text-transform: uppercase; }
+    .card-desc { font-size: 0.925rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
+    .card-link { font-size: 0.85rem; font-weight: 600; color: var(--accent); }
 
-    /* icon colors */
-    .ic-academy  { background: rgba(26,86,219,0.2); }
-    .ic-code     { background: rgba(168,85,247,0.2); }
-    .ic-ai       { background: rgba(56,189,248,0.2); }
-    .ic-digital  { background: rgba(14,165,233,0.2); }
-    .ic-consult  { background: rgba(99,102,241,0.2); }
-    .ic-lab      { background: rgba(234,179,8,0.2); }
-    .ic-kids     { background: rgba(249,115,22,0.2); }
-    .ic-shop     { background: rgba(34,197,94,0.2); }
-    .ic-farms    { background: rgba(132,204,22,0.2); }
-    .ic-warp     { background: rgba(239,68,68,0.2); }
-    .ic-tech     { background: rgba(148,163,184,0.2); }
-    .ic-anim     { background: rgba(236,72,153,0.2); }
-
-    /* ── ABOUT STRIP ── */
-    .about-strip {
-      background: var(--mid); border: 1px solid var(--border);
-      border-radius: 16px; padding: 2.5rem;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
-    }
-    @media(max-width:600px){ .about-strip { grid-template-columns: 1fr; } }
-    .about-strip h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
-    .about-strip p  { color: var(--muted); font-size: 0.9rem; line-height: 1.8; }
-    .reg-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3);
-      border-radius: 8px; padding: 10px 16px; margin-top: 1rem;
-      font-size: 0.82rem; color: var(--green); font-weight: 600;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      text-align: center; padding: 2.5rem 1.5rem;
-      color: var(--muted); font-size: 0.82rem; line-height: 2;
-    }
-    footer a { color: var(--accent); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-    .footer-contact { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    /* Footer */
+    footer { border-top: 1px solid var(--card-border); padding: 4rem 0; color: var(--text-muted); font-size: 0.9rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; }
+    .footer-brand { margin-bottom: 1rem; color: var(--text); font-weight: 600; }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="/">
-    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="32" height="32" rx="8" fill="#1a56db"/>
-      <text x="5" y="22" font-family="monospace" font-size="16" font-weight="800" fill="white">C</text>
-      <circle cx="24" cy="10" r="4" fill="#38bdf8"/>
-    </svg>
-    <span>Codkon<span class="dot">.</span>com</span>
-  </a>
-  <span class="nav-reg">Reg. No: BN413711026 · Ghana</span>
-</nav>
+  <div class="container">
+    <header>
+      <div class="brand">Codkon<span>.</span></div>
+      <div class="reg-tag">BN413711026 · Republic of Ghana</div>
+    </header>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-badge">System v0.0.1 — Ecosystem Scaling &amp; Multi-Division Architecture</div>
-  <h1><span class="brand">Codkon</span> Technologies</h1>
-  <p class="hero-tagline">Research &nbsp;·&nbsp; Coding &nbsp;·&nbsp; Engineering</p>
-  <p class="hero-desc">
-    An integrated commercial parent brand encompassing cutting-edge software development,
-    automated cloud frameworks, embedded physical infrastructure, and high-level applied tech systems.
-    Based in Accra, Ghana.
-  </p>
-  <a class="hero-cta" href="https://academy.codkon.com">Start Learning at Kone Academy →</a>
-</div>
+    <section class="hero">
+      <h1>Engineering systems, scalable infrastructure, and applied AI.</h1>
+      <p>Codkon Technologies is an integrated commercial software house and engineering firm based in Accra, Ghana.</p>
+    </section>
 
-<hr class="divider" />
-
-<!-- DIVISIONS -->
-<section>
-  <p class="section-label">Our Ecosystem</p>
-  <h2 class="section-title">12 Divisions. One Platform.</h2>
-  <p class="section-sub">Every division operates as a focused unit under the Codkon Technologies parent brand.</p>
-
-  <div class="grid">
-
-    <a class="card" href="https://academy.codkon.com">
-      <div class="card-header">
-        <div class="card-icon ic-academy">🎓</div>
+    <div class="section-title">Ecosystem Divisions</div>
+    <main class="grid">
+      
+      <a class="card" href="https://academy.codkon.com">
         <div>
-          <div class="card-name">Kone Academy</div>
-          <div class="card-url">academy.codkon.com</div>
+          <div class="card-header">
+            <div class="card-title">Kone Academy</div>
+            <span class="card-tag">Education</span>
+          </div>
+          <p class="card-desc">Hands-on computer science, robotics, physical computing, and engineering curricula.</p>
+        </div>
+        <span class="card-link">→</span>
+      </a>
+
+      <a class="card" href="https://code.codkon.com">
+        <div>
+          <div class="card-header">
+            <div class="card-title">Kone Code</div>
+            <span class="card-tag">Software</span>
+          </div>
+          <p class="card-desc">High-performance web applications, production APIs, and custom software architectures.</p>
+        </div>
+        <span class="card-link">→</span>
+      </a>
+
+      <a class="card" href="https://ai.codkon.com">
+        <div>
+          <div class="card-header">
+            <div class="card-title">Kone AI</div>
+            <span class="card-tag">Machine Learning</span>
+          </div>
+          <p class="card-desc">Computer vision pipelines, spatio-temporal modeling, and domain-specific AI models.</p>
+        </div>
+        <span class="card-link">→</span>
+      </a>
+
+      <a class="card" href="https://digital.codkon.com">
+        <div>
+          <div class="card-header">
+            <div class="card-title">Kone Digital</div>
+            <span class="card-tag">Cloud</span>
+          </div>
+          <p class="card-desc">High-availability cloud deployment, container workflows, and infrastructure management.</p>
+        </div>
+        <span class="card-link">→</span>
+      </a>
+
+      <a class="card" href="https://consult.codkon.com">
+        <div>
+          <div class="card-header">
+            <div class="card-title">Kone Consult</div>
+            <span class="card-tag">Consulting</span>
+          </div>
+          <p class="card-desc">Technical evaluation, systems architecture auditing, and enterprise digital strategy.</p>
+        </div>
+        <span class="card-link">→</span>
+      </a>
+
+      <a class="card" href="https://lab.codkon.com">
+        <div>
+          <div class="card-header">
+            <div class="card-title">Kone Lab</div>
+            <span class="card-tag">Hardware R&D</span>
+          </div>
+          <p class="card-desc">Microcontroller systems, telemetry hardware, sensors, and embedded physical computing.</p>
+        </div>
+        <span class="card-link">→</span>
+      </a>
+
+      <a class="card" href="https://kids.codkon.com">
+        <div>
+          <div class="card-header">
+            <div class="card-title">Kone Kids</div>
+            <span class="card-tag">STEM Education</span>
+          </div>
+          <p class="card-desc">Computational thinking, spatial logic, and robotics for young learners.</p>
+        </div>
+        <span class="card-link">→</span>
+      </a>
+
+      <a class="card" href="https://shop.codkon.com">
+        <div>
+          <div class="card-header">
+            <div class="card-title">Kone Shop</div>
+            <span class="card-tag">E-Commerce</span>
+          </div>
+          <p class="card-desc">Hardware procurement, microcontrollers, components, and developer kits.</p>
+        </div>
+        <span class="card-link">→</span>
+      </a>
+
+      <a class="card" href="https://farms.codkon.com">
+        <div>
+          <div class="card-header">
+            <div class="card-title">Kone Farms</div>
+            <span class="card-tag">Agritech</span>
+          </div>
+          <p class="card-desc">Smart agriculture telemetry, environmental auditing, and automated yield tracking.</p>
+        </div>
+        <span class="card-link">→</span>
+      </a>
+
+      <a class="card" href="https://warp.codkon.com">
+        <div>
+          <div class="card-header">
+            <div class="card-title">Kone Warp</div>
+            <span class="card-tag">Logistics</span>
+          </div>
+          <p class="card-desc">Route optimization, real-time spatial telemetry, and smart dispatch network.</p>
+        </div>
+        <span class="card-link">→</span>
+      </a>
+
+      <a class="card" href="https://security.codkon.com">
+        <div>
+          <div class="card-header">
+            <div class="card-title">Kone Security</div>
+            <span class="card-tag">Infrastructure</span>
+          </div>
+          <p class="card-desc">Enterprise network security, infrastructure protection, and vulnerability auditing.</p>
+        </div>
+        <span class="card-link">→</span>
+      </a>
+
+    </main>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Codkon Technologies</div>
+          <p>Registered under the Registration of Business Names Act, 1962 (Act 151) in Ghana.</p>
+          <p>Registration No: BN413711026.</p>
+        </div>
+        <div>
+          <div class="footer-brand">Contact</div>
+          <p>Email: <a href="mailto:info@codkon.com" style="color:var(--text); text-decoration:none;">info@codkon.com</a></p>
+          <p>Location: Greater Accra Region, Ghana</p>
         </div>
       </div>
-      <p class="card-desc">Bridges the gap between academic theory and real-world execution. Applied curricula, developer sandboxes, and open-source initiatives.</p>
-      <span class="card-tag">Education Tech</span>
-    </a>
-
-    <a class="card" href="https://code.codkon.com">
-      <div class="card-header">
-        <div class="card-icon ic-code">💻</div>
-        <div>
-          <div class="card-name">Kone Code</div>
-          <div class="card-url">code.codkon.com</div>
-        </div>
-      </div>
-      <p class="card-desc">The dedicated software development house. High-performance web systems, production-grade APIs, software architectures, and automated testing cycles.</p>
-      <span class="card-tag">Software Dev</span>
-    </a>
-
-    <a class="card" href="https://ai.codkon.com">
-      <div class="card-header">
-        <div class="card-icon ic-ai">🤖</div>
-        <div>
-          <div class="card-name">Kone AI</div>
-          <div class="card-url">ai.codkon.com</div>
-        </div>
-      </div>
-      <p class="card-desc">Pioneering domain-specific intelligence. Custom neural architectures, computer vision networks, automated diagnostic logic, and data classification engines.</p>
-      <span class="card-tag">AI &amp; ML</span>
-    </a>
-
-    <a class="card" href="https://digital.codkon.com">
-      <div class="card-header">
-        <div class="card-icon ic-digital">☁️</div>
-        <div>
-          <div class="card-name">Kone Digital</div>
-          <div class="card-url">digital.codkon.com</div>
-        </div>
-      </div>
-      <p class="card-desc">Cloud hosting infrastructure and high-availability operations. Secure container workflows, distributed databases, and robust fallback systems.</p>
-      <span class="card-tag">Cloud &amp; SaaS</span>
-    </a>
-
-    <a class="card" href="https://consult.codkon.com">
-      <div class="card-header">
-        <div class="card-icon ic-consult">📊</div>
-        <div>
-          <div class="card-name">Kone Consult</div>
-          <div class="card-url">consult.codkon.com</div>
-        </div>
-      </div>
-      <p class="card-desc">Enterprise technical evaluation and systems consulting. Infrastructure optimization, systems auditing, and modern development pipeline transitions.</p>
-      <span class="card-tag">ICT Consultancy</span>
-    </a>
-
-    <a class="card" href="https://lab.codkon.com">
-      <div class="card-header">
-        <div class="card-icon ic-lab">🔬</div>
-        <div>
-          <div class="card-name">Kone Lab</div>
-          <div class="card-url">lab.codkon.com</div>
-        </div>
-      </div>
-      <p class="card-desc">Research hub for hardware prototyping and micro-electronics. Circuit configuration, telemetry systems, and embedded real-time computing (RTOS).</p>
-      <span class="card-tag">Hardware R&amp;D</span>
-    </a>
-
-    <a class="card" href="https://kids.codkon.com">
-      <div class="card-header">
-        <div class="card-icon ic-kids">🧒</div>
-        <div>
-          <div class="card-name">Kone Kids</div>
-          <div class="card-url">kids.codkon.com</div>
-        </div>
-      </div>
-      <p class="card-desc">Injecting foundational computational thinking into younger generations through interactive block-logic, spatial interfaces, and structural logic pathways.</p>
-      <span class="card-tag">Kids Education</span>
-    </a>
-
-    <a class="card" href="https://shop.codkon.com">
-      <div class="card-header">
-        <div class="card-icon ic-shop">🛒</div>
-        <div>
-          <div class="card-name">Kone Shop</div>
-          <div class="card-url">shop.codkon.com</div>
-        </div>
-      </div>
-      <p class="card-desc">Central e-commerce storefront for hardware sourcing, developer tools, microcontrollers, components tracking, and branded equipment procurement.</p>
-      <span class="card-tag">E-Commerce</span>
-    </a>
-
-    <a class="card" href="https://farms.codkon.com">
-      <div class="card-header">
-        <div class="card-icon ic-farms">🌱</div>
-        <div>
-          <div class="card-name">Kone Farms</div>
-          <div class="card-url">farms.codkon.com</div>
-        </div>
-      </div>
-      <p class="card-desc">Smart agritech portal combining telemetry sensors, remote environmental auditing, automated yield calculations, soil data loops, and supply chain portals.</p>
-      <span class="card-tag">Agritech</span>
-    </a>
-
-    <a class="card" href="https://warp.codkon.com">
-      <div class="card-header">
-        <div class="card-icon ic-warp">🚚</div>
-        <div>
-          <div class="card-name">Kone Warp</div>
-          <div class="card-url">warp.codkon.com</div>
-        </div>
-      </div>
-      <p class="card-desc">Modern transport, high-speed routing, and smart delivery network. Real-time location mapping, route allocation scripts, and dispatch algorithms.</p>
-      <span class="card-tag">Logistics</span>
-    </a>
-
-    <a class="card" href="https://security.codkon.com">
-      <div class="card-header">
-        <div class="card-icon ic-tech">🔐</div>
-        <div>
-          <div class="card-name">Kone Security</div>
-          <div class="card-url">security.codkon.com</div>
-        </div>
-      </div>
-      <p class="card-desc">Advanced security systems, enterprise infrastructure protection, and high-level systems architecture across the Codkon ecosystem.</p>
-      <span class="card-tag">Security</span>
-    </a>
-
-    <a class="card" href="#">
-      <div class="card-header">
-        <div class="card-icon ic-anim">🎨</div>
-        <div>
-          <div class="card-name">Anim Studio</div>
-          <div class="card-url">Coming soon</div>
-        </div>
-      </div>
-      <p class="card-desc">High-fidelity visualization, UX animations, 3D structural model rendering, interactive simulators, and graphical rendering for engineering design.</p>
-      <span class="card-tag">Design &amp; Viz</span>
-    </a>
-
+    </footer>
   </div>
-</section>
-
-<hr class="divider" />
-
-<!-- ABOUT -->
-<section>
-  <p class="section-label">About the Company</p>
-  <h2 class="section-title">Who We Are</h2>
-  <div class="about-strip">
-    <div>
-      <h3>Corporate Profile</h3>
-      <p>
-        Duly registered under the Registration of Business Names Act, 1962 (Act 151) in the
-        Republic of Ghana, Codkon Technologies operates as an integrated commercial parent brand
-        encompassing cutting-edge software development, automated cloud frameworks, embedded
-        physical infrastructure, and high-level applied tech systems.
-      </p>
-      <div class="reg-pill">
-        ✓ &nbsp; Registered — BN413711026 &nbsp;|&nbsp; Republic of Ghana
-      </div>
-    </div>
-    <div>
-      <h3>Core Mandate &amp; Scope</h3>
-      <p>
-        Our enterprise drives advanced computational solutions across dual axes: building
-        industrial, production-grade applications for businesses, and scaling automated
-        ecosystems that accelerate engineering capabilities globally.
-      </p>
-      <p style="margin-top:1rem;">
-        Principal activities include Software Engineering, ICT Consultancy, Applied Research
-        in neural networks &amp; ML, and Technical Education with hands-on cloud sandboxes.
-      </p>
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-contact">
-    <a href="mailto:info@koneacademy.io">info@koneacademy.io</a>
-    <a href="tel:+233551993820">+233 (0) 55 199 3820</a>
-    <span>Oyibi, Greater Accra Region, Ghana</span>
-  </div>
-  <p>
-    &copy; 2026 <strong>Codkon Technologies</strong> &nbsp;|&nbsp;
-    Reg. No: BN413711026, Republic of Ghana &nbsp;|&nbsp;
-    Owner: Philip Hotor
-  </p>
-  <p style="margin-top:0.5rem;">
-    <a href="https://academy.codkon.com">Kone Academy</a> &nbsp;·&nbsp;
-    <a href="https://code.codkon.com">Kone Code</a> &nbsp;·&nbsp;
-    <a href="https://ai.codkon.com">Kone AI</a> &nbsp;·&nbsp;
-    <a href="https://consult.codkon.com">Kone Consult</a> &nbsp;·&nbsp;
-    <a href="https://lab.codkon.com">Kone Lab</a>
-  </p>
-</footer>
 
 </body>
 </html>
